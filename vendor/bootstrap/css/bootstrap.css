@@ -67,6 +67,8 @@ body {
   outline: 0 !important;
 }
 
+
+
 hr {
   box-sizing: content-box;
   height: 0;
@@ -1840,11 +1842,13 @@ pre code {
 }
 
 .table-responsive {
+  margin: auto;
   display: block;
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: center;
 }
 
 .table-responsive > .table-bordered {
