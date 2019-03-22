@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
 
 <head>
 
@@ -51,10 +51,62 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
+  <div class="container" style="text-align:center;" >
+    <header class="jumbotron my-4" style="padding: 5px;">
+      <h1 class="h3">Self Driving Car</h1>
+      <p class="lead">  Language(s): Python, Timeline: 3 weeks. </p>
 
+      <table style="margin:auto; text-align: center;">
+        <tr>
+          <td > <a class="nav-link" href="#collisions"> Collision Detection </a> </td>
+          <td > <a class="nav-link" href="#sensors" > Sensor Detection </a> </td>
+          <td > <a class="nav-link" href="#ai"> Reinforcement Learning </a> </td>
+          <td > <a class="nav-link" href="#future"> Future Developments </a> </td>
+        </tr>
+      </table>
+    
+      <img src="projectPhotos/CarAI/header.png" width="75%"/>
+    </header>
   </div>
   <!-- /.container -->
+
+  <div class="container" id="collisions" style="padding-bottom:10px;">
+    <h1 class="h3">Collision Detection</h1>
+    <p class="lead" >
+      Collision detection was used in this project to calculate each time the car impacted with a boundary. This data 
+      was then used as a negative reward for the reinforcement learning stage. Also, the car displays each time it
+      impacts a wall allowing me to see the exact situation where it happened, and tweak the reactions of the car
+      based on the sensor data that was calculated before the time of impact. The system works by breaking down the 
+      frame of the car into a virtual rectangle, and alerting me whenever one of the lines of the frame intersects with
+      a boundary. Below, I have an example of the system.
+    </p>
+
+    <div class="row">
+        <div class="column">
+            <img src="projectPhotos/CarAI/collisiondetection1.png" width="75%"/>
+        </div>
+        <div class="column">
+            <img  src="projectPhotos/CarAI/Collision-Detection.gif" width="75%" />
+        </div>
+        <div class="column">
+            <img  src="projectPhotos/CarAI/rectline.png" width="75%" />
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="container" id="sensors">
+    
+  </div>
+
+  <div class="container" id="ai">
+      
+  </div>
+
+  <div class="container" id="future">
+      
+  </div>
 
   <!-- Footer -->
   <footer class="py-5 bg-light">
