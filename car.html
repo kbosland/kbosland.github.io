@@ -4,11 +4,10 @@
 <head>
 
   <script>
-    var shiftWindow = function() { scrollBy(0, -50) };
-    window.addEventListener("hashchange", shiftWindow);
-    function load() { if (window.location.hash) shiftWindow(); }
+    function goToByScroll(id){
+      $('html,body').animate({scrollTop: $("#"+id).offset().top}, 'fast');
+    }
   </script>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -56,24 +55,24 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="container" style="text-align:center;" >
-    <header class="jumbotron my-4" style="padding: 5px;">
-      <h1 class="h3">Self Driving Car</h1>
-      <p class="lead">  Language(s): Python, Timeline: 3 weeks. </p>
-
-      <table style="margin:auto; text-align: center;">
-        <tr>
-          <td > <a class="nav-link" href="#collisions"> Collision Detection </a> </td>
-          <td > <a class="nav-link" href="#sensors" > Sensor Detection </a> </td>
-          <td > <a class="nav-link" href="#ai"> Reinforcement Learning </a> </td>
-          <td > <a class="nav-link" href="#future"> Future Developments </a> </td>
-        </tr>
-      </table>
+    <!-- Page Content -->
+    <div class="container" style="text-align:center;" >
+        <header class="jumbotron my-4" style="padding: 5px;">
+          <h1 class="h3">Self Driving Car</h1>
+          <p class="lead"> Made with Python </p>
     
-      <img src="projectPhotos/CarAI/header.png" width="75%"/>
-    </header>
-  </div>
+          <table style="margin:auto; text-align: center;">
+            <tr>
+              <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('collisions')"> Collisions </a> </td>
+              <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('sensors')" > Sensors </a> </td>
+              <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('ai')"> AI </a> </td>
+              <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('demo')"> Demo </a> </td>
+            </tr>
+          </table>
+        
+          <img src="projectPhotos/CarAI/header.png" width="80%"/>
+        </header>
+      </div>
   <!-- /.container -->
 
   <a class="anchor" id="collisions"></a>
@@ -89,14 +88,14 @@
     </p>
 
     <div class="row">
-        <div class="column">
-            <img src="projectPhotos/CarAI/collisiondetection1.png" width="75%"/>
+        <div class="img-column">
+            <img  class="img-hundo" src="projectPhotos/CarAI/collisiondetection1.png" width="75%"/>
         </div>
-        <div class="column">
-            <img  src="projectPhotos/CarAI/Collision-Detection.gif" width="75%" />
+        <div class="img-column">
+            <img class="img-hundo" src="projectPhotos/CarAI/Collision-Detection.gif" width="75%" />
         </div>
-        <div class="column">
-            <img  src="projectPhotos/CarAI/rectline.png" width="75%" />
+        <div class="img-column">
+            <img class="img-hundo"  src="projectPhotos/CarAI/rectline.png" width="75%" />
         </div>
       </div>
     </div>
@@ -117,25 +116,55 @@
       </p>
 
       <div class="row">
-          <div class="column">
-              <img src="projectPhotos/CarAI/sensor.png" width="75%"/>
+          <div class="img-column">
+              <img class="img-hundo" src="projectPhotos/CarAI/sensor.png" width="75%"/>
           </div>
-          <div class="column">
-              <img  src="projectPhotos/CarAI/Sensor-Detection.gif" width="75%" />
+          <div class="img-column">
+              <img class="img-hundo" src="projectPhotos/CarAI/Sensor-Detection.gif" width="75%" />
           </div>
-          <div class="column">
-              <img  src="projectPhotos/CarAI/sensorWithDetection.png" width="75%" />
+          <div class="img-column">
+              <img class="img-hundo" src="projectPhotos/CarAI/sensorWithDetection.png" width="75%" />
           </div>
         </div>
       </div>
   </div>
+  <br />
+  <br />
 
-  <div class="container" id="ai">
-      
+  <a class="anchor" id="ai"></a>
+  <div class="container">
+      <h1 class="h3"> AI - Reinforcement Learning</h1>
+      <p class="lead">
+        I wanted to expand on simply using the sensors and collision detection for the car to get it around the track in one piece.
+        The next step was to implement some artificial intelligence, enabling the car to not only complete a lap, but learn the fastest
+        route around the track. Through reinforcement learning, this is possible. The logic is simple - we need to give the AI a positive
+        award when it does something positive, and a negative award when it does something negative. Through reinforcing this association, the AI will
+        learn it's goal - to achieve the maximum amount of points, and how to do it - speed around the track as fast as possible!
+        To accomplish this, I introduced a gate reward system. The gates are indicated by the green lines through the middle of the track,
+        as shown below.
+
+        <img class="img-center" src="projectPhotos/CarAI/gates.png" width="65%">
+
+        <p class="lead">
+        Through randomized exploration, the AI will begin to learn which moves trigger a collision. Each attempted lap will be scored based on how many
+        gates the AI passed, and how many collisions it had. The program will always choose the path with the maximum amount of points,
+        and find the point in that path where the collision occured - and it will restart from before the AI landed on the path to a collision.
+        Through this method, the AI will build a path through the entire track! Once it has completed a full lap, it will try to improve the previous
+        path to achieve a higher score, maximizing points by increasing speed and improving decision making. This part of the project is currently
+        in development!
+        </p>
+      </p>
   </div>
+  <br />
 
-  <div class="container" id="future">
-      
+  <a class="anchor" id="demo"></a>
+  <div class="container">
+    <h1 class="h3"> Full Demo! </h1>
+    <p class="lead">
+      Here you can see a full demo of the car moving around the track! In the future, my goal is to apply this to a real-life scenario, with an RC car built
+      using a Raspberry Pi Model 3B mounted with multiple sensors.
+    </p>
+    <img class="img-hundo" src="projectPhotos/CarAI/Drive-Test.gif"/>
   </div>
 
   <!-- Footer -->
