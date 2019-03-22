@@ -3,6 +3,12 @@
 
 <head>
 
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -20,7 +26,7 @@
 
 </head>
 
-<body>
+<body> 
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
@@ -70,7 +76,8 @@
   </div>
   <!-- /.container -->
 
-  <div class="container" id="collisions" style="padding-bottom:10px;">
+  <a class="anchor" id="collisions"></a>
+  <div class="container" style="padding-bottom:10px;">
     <h1 class="h3">Collision Detection</h1>
     <p class="lead" >
       Collision detection was used in this project to calculate each time the car impacted with a boundary. This data 
@@ -93,11 +100,34 @@
         </div>
       </div>
     </div>
-    
   </div>
 
-  <div class="container" id="sensors">
-    
+  <br/>
+  <br/>
+  <a class="anchor" id="sensors"></a>
+  <div class="container">
+      <h1 class="h3">Sensor Detection</h1>
+      <p class="lead" >
+        Sensor detection was the most important piece of creating this self driving car. This is what the car uses to see the track, and to differentiate between the gates and the boundaries. Each sensor is 
+        represented a line with a starting point in the center of the car, and an endpoint at the end of the sensor. The car keeps track of its sensor data at all times, and this data consists of what each 
+        sensor is seeing at all times, and at what distances. This allows the car to predict when a collision is imminent, as well as predict when a right or left
+        turn is coming up. Using the front sensors, the car knows to accelerate when it has space in front of it, and to slow down when it notices a turn is coming up. 
+        Using the angle of intersection between the sensors and the boundaries, the car knows how much to turn at each point - allowing it to keep within the track and navigate
+        even through the sharpest of turns. 
+      </p>
+
+      <div class="row">
+          <div class="column">
+              <img src="projectPhotos/CarAI/sensor.png" width="75%"/>
+          </div>
+          <div class="column">
+              <img  src="projectPhotos/CarAI/Sensor-Detection.gif" width="75%" />
+          </div>
+          <div class="column">
+              <img  src="projectPhotos/CarAI/sensorWithDetection.png" width="75%" />
+          </div>
+        </div>
+      </div>
   </div>
 
   <div class="container" id="ai">
