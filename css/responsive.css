@@ -1,29 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
-body {
-  color: #000;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1335px;
-  margin: 0 auto;
-}
-
 .grid-row {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
+  margin: 0 auto;
 }
 
 .grid-item {
   height: 550px;
-  flex-basis: 20%;
+  flex-basis: 25%;
   -ms-flex: auto;
-  width: 259px;
   position: relative;
   padding: 10px;
   box-sizing: border-box;
@@ -134,7 +121,6 @@ body {
 }
 
 .item-category {
-  text-transform: uppercase;
   display: block;
   margin-bottom: 20px;
   font-size: 14px;
@@ -175,6 +161,10 @@ body {
   margin: -2% -2%;
 }
 
+.slide {
+  width: 100%;
+}
+
 @media(max-width: 1333px) {
   .grid-item {
     flex-basis: 25%;
@@ -183,7 +173,7 @@ body {
 
 @media(max-width: 1073px) {
    .grid-item {
-    flex-basis: 25%;
+    flex-basis: 33%;
   }
 }
 
