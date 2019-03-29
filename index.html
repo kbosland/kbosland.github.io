@@ -63,11 +63,19 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
-
-    <header class="jumbotron my-4">
+  <div class="container" style="padding: 30px; ">
+    <div class="slideshow" id="slides" style="background-color:#ececec; border-radius: 10px; text-align: center; ">
+<!-- Slideshow container -->
       
-    </header>
+      <a href="tagalong.html">  
+        <img src="placeholder" style="padding: 20px;"/>
+      </a>
+
+    </div>
+
+    <div>
+        <h1 class="h3" style="text-align: center; padding: 15px;"> Projects </h1>
+    </div>
 
     <div class="container" style="margin:0 auto;">
         <div class="grid-row">
@@ -134,63 +142,6 @@
           </div>
     </div>
 
-    <!--  
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="projectPhotos/CarAI/pic1.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Self Driving Car</h4>
-            <p class="card-text">Using Python, created a smart self driving car simulation that uses a made from scratch collision detection and sensor system to avoid obstacles on a racetrack.</p>
-          </div>
-          <div class="card-footer">
-            <a href="car.html" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="projectPhotos/TagAlong/layout.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Tag Along</h4>
-            <p class="card-text"> 
-            </p>
-          </div>
-          <div class="card-footer">
-            <a href="tagalong.html" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="projectPhotos/Mosaic/thumbnail.png" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Mosaic</h4>
-            <p class="card-text">Using Visual Studio, C# and SQL Server, created an MVC web application that simulates a university management environment.</p>
-          </div>
-          <div class="card-footer">
-            <a href="mosaic.html" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="projectPhotos/Hue/thumbnail.jpg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Hue Sync</h4>
-            <p class="card-text">Using python and my own wrapper for the Hue RESTful API, created an application to interact with Phillips Hue lights, and have them pulse in sync to the song that is playing.</p>
-          </div>
-          <div class="card-footer">
-            <a href="hue.html" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  -->
-
   </div>
   <!-- /.container -->
 
@@ -217,6 +168,23 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-</body>
+  <script>
+    window.onload = function start() {
+      //rotateSlides();
+    }
 
+    function rotateSlides (){
+      var next = 0;
+      slides = document.getElementsByClassName("slide");
+      var interval = setInterval (function() {
+        slides[next].style.display = "none";
+        next = (next + 1) % 3;
+        slides[next].style.display = "flex";
+        
+
+      }, 4000);
+    }
+  </script>
+
+</body>
 </html>

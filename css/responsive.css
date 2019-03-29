@@ -161,8 +161,8 @@
   margin: -2% -2%;
 }
 
-.slide {
-  width: 100%;
+.img-slide {
+  width: 75%;
 }
 
 @media(max-width: 1333px) {
