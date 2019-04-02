@@ -43,22 +43,26 @@ a.anchor {
   .img-column {
     flex-basis: 33%;
   }
+
 }
 
 @media(max-width: 1073px) {
    .img-column {
     flex-basis: 33%;
   }
+
 }
 
 @media(max-width: 815px) {
   .img-column {
     flex-basis: 50%;
   }
+
 }
 
 @media(max-width: 555px) {
   .img-column {
     flex-basis: 100%;
   }
+
 }
