@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
 
 <head>
+
+  <script>
+    function goToByScroll(id){
+      $('html,body').animate({scrollTop: $("#"+id).offset().top}, 'fast');
+    }
+  </script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,9 +61,127 @@
     <header class="jumbotron my-4" style="text-align:center;">
       <h1 class="h3">Mosaic</h1>
       <p class="lead"> Made with C#, HTML5, JavaScript and SQL </p>
+
+      <table style="margin:auto; text-align: center;">
+        <tr>
+          <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('intro')"> Intro </a> </td>
+          <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('features')"> Features </a> </td>
+          <td > <a class="nav-link" href="javascript:void(0);" onclick="goToByScroll('architecture')"> Architecture </a> </td>
+        </tr>
+      </table>
     </header>
   </div>
   <!-- /.container -->
+
+  <a class="anchor" id="intro"></a>
+  <div class="container" style="padding-bottom:10px;">
+    <h1 class="h3">Introduction</h1>
+    <p class="lead" >
+      My work term at the Ontario Financing Authority involved working with a great deal of MVC web applications, maintaining them and 
+      building new features from scratch. Therefore, I decided to get ahead of the game and play around with C# web applications and the 
+      MVC app architecture. This meant setting up my local MySQL database, and get started with Visual Studio 2017. Mosaic is an application
+      that simulates a university environment manager, with seperate functions for both students and professors. A few of the features 
+      include a secure login, a messaging system, class announcement feeds and class management.
+    </p>
+  </div>
+  <br/>
+
+  <a class="anchor" id="features"></a>
+  <div class="container" style="padding-bottom:10px;">
+    <h1 class="h3">Features</h1>
+    <br/>
+    <h1 class="h4">Secure Login</h1>
+    <p class="lead" >
+      The first feature I implemented was a secure login system with client-side verification. The user's login information is checked
+      against a cached list of encrypted usernames and passwords, and if a match is found the field turns green and the user can login,
+      otherwise the field stays red. Client-side scripting and caching was used to reduce the number of calls to the SQL database, as well
+      as improve efficiency. The user also recieves an alert with a detailed error report on what went wrong with the login. Finally, the 
+      system also has a change password option, where users can sign in with their old credentials, and add a new password.  New students and professors are also able to create new accounts to interact with the system, set their credentials
+      and proceed to the login. These processes use the same verification as the login system.
+    </p>
+    <div class="row">
+      <div class="img-column">
+          <img  class="img" src="projectPhotos/Mosaic/login1.PNG" width="75%"/>
+      </div>
+      <div class="img-column">
+          <img class="img" src="projectPhotos/Mosaic/login2.PNG" width="75%" />
+      </div>
+      <div class="img-column">
+        <img class="img" src="projectPhotos/Mosaic/login3.PNG" width="75%" />
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="container" style="padding-bottom:10px;">
+    <h1 class="h4">Class Management</h1>
+    <p class="lead">
+      Another feature that was key to our application was the class management aspect. Students are able to enroll in classes, check class
+      availability and drop classes. Professors are able to enroll to teach a class, view availability and drop teaching a class.
+      Here we have more client-side scripting, that follows the same theme for displaying errors as the login system. Both students and professors
+      can only enroll in valid classes, and drop classes that they are already taking. Below are a few examples of the UI for class 
+      management.
+    </p>
+
+    <div class="row">
+      <div class="img-column" style="flex:75%">
+          <img  class="img" src="projectPhotos/Mosaic/enrollstudent.png" width="75%"/>
+      </div>
+      <div class="img-column" style="flex:25%">
+        <img class="img" src="projectPhotos/Mosaic/dropstudent.png" width="75%"/>
+      </div>
+    </div>
+  </div>
+  
+  <br/>
+
+  <div class="container" style="padding-bottom:10px">
+    <h1 class="h4">Email System</h1>
+    <p class="lead">
+      I also implemented a secure email system for the students and professors. Through the database, the students and professors can send emails, reply
+      directly to emails, forward emails and mark emails as read. They can check their inboxes and outboxes, as well as their contact list of
+      all other students or professors currently enrolled at the school. These interactions all happen through the database, with client-side scripting to
+      catch errors when sending emails, such as incorrect usernames. Below are a few examples of the UI for the email system.
+    </p>
+  
+    <div class="row">
+      <div class="img-column" style="flex:30%">
+          <img  class="img" src="projectPhotos/Mosaic/sendemail.png" width="75%"/>
+      </div>
+      <div class="img-column" style="flex:70%">
+        <img class="img" src="projectPhotos/Mosaic/profinbox.png" width="75%"/>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <br/>
+
+  <a class="anchor" id="architecture"></a>
+  <div class="container" style="padding-bottom:10px;">
+    <h1 class="h3">Architecture</h1>
+    <p class="lead" >
+      I utilized a 5-tier architecture when designing this application, which consisted of: A Service Layer, Repository Layer, UI Layer, Model Layer and a Logic Layer. 
+      This made is much easier to maintain the abstraction of my program, and also maintain a seperation of concerns between the
+      modules. For example, the serivce layer handled verification, the repository layer handles database interactions through LINQ, and the model layer stores object data.
+      The process for performing user actions was:
+    </p>
+      <ol>
+        <li>Recieve user input through the UI Layer (Views)</li>
+        <li>Process user input in Logic Layer (Controllers)</li>
+        <li>Ensure user input is valid in Service Layer (Services)</li>
+        <li>Store user input in Model Layer (Models)</li>
+        <li>Interact with the database and perform CRUD operations with the data through Repository Layer (Repositories)</li>
+      </ol>
+      <p class="lead">
+      For the design of the application, I tried to keep it as simple as possible to increase usability for a variety of users.
+      Below, I have a diagram of how the layers interact to process user data - shown by a student login.
+    </p>
+
+    <img src="projectPhotos/Mosaic/process.png"/>
+
+  </div>
+  <br/>
+  <br/>
 
   <!-- Footer -->
   <footer class="py-5 bg-light">
